@@ -17,7 +17,7 @@
 # end
 
 # refresh databases every 2 hours to remove dead job offers and add new job offers on JOBBOX
-  every 1.minute do
+  every 120.minute do
     puts "Testing whenever"
     runner "UpdateWorker.refresh_companies"
     runner "UpdateWorker.refresh_offers"

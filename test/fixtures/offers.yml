@@ -19,7 +19,7 @@ one:
   successful?: false
   title: MyString
   work_from_home: false
-  type: 
+  type:
   tags: MyString
 
 two:
@@ -41,5 +41,5 @@ two:
   successful?: false
   title: MyString
   work_from_home: false
-  type: 
+  type:
   tags: MyString

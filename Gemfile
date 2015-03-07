@@ -41,6 +41,12 @@ gem 'spring',        group: :development
 
 #My Gems
 
+#Testing
+group :development, :test do
+  gem 'rspec'
+  gem 'rspec-rails', '~> 3.0'
+end
+
 #To define ENV variables app specific
 gem 'figaro'
 
@@ -55,3 +61,5 @@ gem 'whenever', :require => false
 
 #ASync Work // might be useful
 gem 'sidekiq'
+
+
