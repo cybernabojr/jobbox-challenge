@@ -1,0 +1,1 @@
+json.extract! @offer, :id, :city, :company_id, :country_code, :country_name, :currency_code, :expires_at, :nice_to_have, :perks, :published_at, :reward, :remote, :relocation_paid, :role_description, :salary_low, :salary_high, :successful?, :title, :work_from_home, :type, :tags, :created_at, :updated_at

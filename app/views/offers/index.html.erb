@@ -1,0 +1,61 @@
+<%- model_class = Offer -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:city) %></th>
+      <th><%= model_class.human_attribute_name(:company_id) %></th>
+      <th><%= model_class.human_attribute_name(:country_code) %></th>
+      <th><%= model_class.human_attribute_name(:country_name) %></th>
+      <th><%= model_class.human_attribute_name(:currency_code) %></th>
+      <th><%= model_class.human_attribute_name(:expires_at) %></th>
+      <th><%= model_class.human_attribute_name(:nice_to_have) %></th>
+      <th><%= model_class.human_attribute_name(:perks) %></th>
+      <th><%= model_class.human_attribute_name(:published_at) %></th>
+      <th><%= model_class.human_attribute_name(:reward) %></th>
+      <th><%= model_class.human_attribute_name(:remote) %></th>
+      <th><%= model_class.human_attribute_name(:relocation_paid) %></th>
+      <th><%= model_class.human_attribute_name(:role_description) %></th>
+      <th><%= model_class.human_attribute_name(:salary_low) %></th>
+      <th><%= model_class.human_attribute_name(:salary_high) %></th>
+      <th><%= model_class.human_attribute_name(:successful?) %></th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:work_from_home) %></th>
+      <th><%= model_class.human_attribute_name(:type) %></th>
+      <th><%= model_class.human_attribute_name(:tags) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @offers.each do |offer| %>
+      <tr>
+        <td><%= offer.id%></td>
+        <td><%= offer.city %></td>
+        <td><%= offer.company_id %></td>
+        <td><%= offer.country_code %></td>
+        <td><%= offer.country_name %></td>
+        <td><%= offer.currency_code %></td>
+        <td><%= offer.expires_at %></td>
+        <td><%= offer.nice_to_have %></td>
+        <td><%= offer.perks %></td>
+        <td><%= offer.published_at %></td>
+        <td><%= offer.reward %></td>
+        <td><%= offer.remote %></td>
+        <td><%= offer.relocation_paid %></td>
+        <td><%= offer.role_description %></td>
+        <td><%= offer.salary_low %></td>
+        <td><%= offer.salary_high %></td>
+        <td><%= offer.successful? %></td>
+        <td><%= offer.title %></td>
+        <td><%= offer.work_from_home %></td>
+        <td><%= offer.type %></td>
+        <td><%= offer.tags %></td>
+        <td><%=l offer.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
