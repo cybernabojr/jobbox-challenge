@@ -62,4 +62,6 @@ gem 'whenever', :require => false
 #ASync Work // might be useful
 gem 'sidekiq'
 
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 

@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Offer, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  it "as one company" do
+    o = Offer.new
+    o.company.should
+
+  end
 end
