@@ -1,6 +1,6 @@
-require 'job_box'
 class UpdateWorker
   include Sidekiq::Worker
+  include HTTParty
 
   def self.save_company(company)
     Company.create(company)
@@ -17,7 +17,7 @@ class UpdateWorker
     #Cursor for api calls since they are paginated
     offset = 0
     while true
-      response = api_caller.companies(offset)
+      response = UpdateWorker.new.companies(offset)
       if response.success?
         #If response is empty, there are no more companies
         response.size == 0 ? break : ''
@@ -45,7 +45,7 @@ class UpdateWorker
     #Cursor for api calls since they are paginated
     offset = 0
     while true
-      response = api_caller.offers(offset)
+      response = UpdateWorker.new.offers(offset)
       if response.success?
         #If response is empty, there are no more offers
         response.size == 0 ? break : ''
@@ -83,5 +83,31 @@ class UpdateWorker
       self.update_offers
     puts 'Finished refreshing Offers'
   end
+
+  base_uri "http://www.jobbox.io/api/v1/"
+  attr_accessor :headers
+  def initialize
+    self.headers = {"Authorization" => "Token token=#{ENV["jobbox_api_key"]}"}
+  end
+  # Returns the companies present at jobbox
+  def companies( offset = 0, limit = 50)
+    response = HTTParty.get(UpdateWorker.base_uri+"/companies.json?offset=#{offset}&limit=#{limit}", :headers => headers)
+    if response.success?
+      response
+    else
+      raise response.response
+    end
+  end
+  # Returns the job offers present at jobbox
+  def offers(  offset = 0, limit = 50)
+    response = HTTParty.get(UpdateWorker.base_uri+"/offers.json?offset=#{offset}&limit=#{limit}", :headers => headers)
+    if response.success?
+      response
+    else
+      raise response.response
+    end
+  end
+
+
 end
 
