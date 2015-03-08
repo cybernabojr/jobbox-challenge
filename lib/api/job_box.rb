@@ -10,7 +10,7 @@ class JobBox
   end
   # Returns the companies present at jobbox
   def companies( offset = 0, limit = 50)
-    response = self.class.get("/companies.json?offset=#{offset}&limit=#{limit}", :headers => headers)
+    response = HTTParty.get(JobBox.base_uri+"/companies.json?offset=#{offset}&limit=#{limit}", :headers => headers)
     if response.success?
       response
     else
@@ -19,7 +19,7 @@ class JobBox
   end
   # Returns the job offers present at jobbox
   def offers(  offset = 0, limit = 50)
-    response = self.class.get("/offers.json?offset=#{offset}&limit=#{limit}", :headers => headers)
+    response = HTTParty.get(JobBox.base_uri+"/offers.json?offset=#{offset}&limit=#{limit}", :headers => headers)
     if response.success?
       response
     else
