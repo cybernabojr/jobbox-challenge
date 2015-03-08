@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: jobbox-challenge_production
-  username: jobbox-challenge
-  password: <%= ENV['JOBBOX-CHALLENGE_DATABASE_PASSWORD'] %>
+  database: defb4v1vqpdnb1
+  username: ralqqdkzbnxdto
+  password: <%= ENV['JOBBOX-CHALLENGE_DATABASE_PASSWORD_HEROKU'] %>
