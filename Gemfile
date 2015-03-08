@@ -43,6 +43,8 @@ gem 'spring',        group: :development
 
 #My Gems
 
+gem 'rails_12factor'
+
 #Testing
 group :development, :test do
   gem 'rspec'
