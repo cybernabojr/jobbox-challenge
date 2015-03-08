@@ -44,7 +44,7 @@ gem 'spring',        group: :development
 #My Gems
 
 gem 'rails_12factor'
-
+gem 'simple_form'
 #Testing
 group :development, :test do
   gem 'rspec'
@@ -56,6 +56,7 @@ gem 'figaro'
 
 #Boostrap
 gem 'twitter-bootstrap-rails'
+gem 'bootstrap_form'
 
 #API Magic
 gem 'httparty'

@@ -1,11 +1,13 @@
 class SearchController < ApplicationController
 
 def search
-  if params[:q].nil?
+  #Get all skills present in job offers
+  @params = params
+  if params["/search"].nil?
     @offers = []
     @companies = []
   else
-    @offers = Offer.search(params[:q]).records
+    @offers = Offer.search(params["/search"][":q"]).records
      hits = @offers.results
 
     #collect all company ids
@@ -17,5 +19,7 @@ def search
   end
 
 end
+
+
 
 end

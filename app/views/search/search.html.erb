@@ -1,31 +1,40 @@
-
-<div class="row">
-  <div class="search center">
+<%= render 'params' %><div class="row">
+  <div class="search center jumbotron">
     <h1>Search Jobs</h1>
-    <%= form_for search_path, method: :get do |f| %>
-    <p>
-      <%= text_field_tag :q, params[:q] %>
-      <%= submit_tag "Go", name: nil %>
-    </p>
-    <% end %>
-    </div>
-    <div class="results" onchange="results()" >
-      <% @companies.each do |company| %>
-      <div class="row search-result">
-        <div class="col-md-3 center">
-          <img class="search-result-image" src="<%=company.logo_url%>" alt="Logo" >
-        </div>
-        <div class="col-md-5 center ">
-          <h3>
-          <%= link_to company.name, company.website_url %>
-          </h3>
-        </div>
-        <div class="col-md-4 center">
-          <p>  <%=company.short_pitch%> </p>
-        </div>
-      </div>
+    <div id="skills-search">
+
+      <%=  bootstrap_form_for search_path, method: :get do |f| %>
+
+         <%= f.collection_check_boxes ":q", LANGUAGES, "to_s","to_s"%>
+      <%#= collection_radio_buttons "q","", LANGUAGES.collect ,"to_s", "to_s"%>
+      <%#=select_tag "q", options_from_collection_for_select(LANGUAGES.collect, "to_s","to_s"), multiple: true%>
+      <li class="divider"></li>
+       <%#= collection_radio_buttons "q","", FRAMEWORKS.collect ,"to_s", "to_s"%>
+      <%= f.form_group do %>
+
+        <%= f.submit "Search"  %>
+      <% end %>
       <% end %>
     </div>
   </div>
+  <% unless @companies.empty? %>
+  <div class="results" onchange="results()" >
+    <% @companies.each do |company| %>
+    <div class="row search-result">
+      <div class="col-md-3 center">
+        <img class="search-result-image" src="<%=company.logo_url%>" alt="Logo" >
+      </div>
+      <div class="col-md-5 center ">
+        <h3>
+        <%= link_to company.name, company.website_url %>
+        </h3>
+      </div>
+      <div class="col-md-4 center">
+        <p>  <%=company.short_pitch%> </p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <% end %>
 </div>
-
+</div>
