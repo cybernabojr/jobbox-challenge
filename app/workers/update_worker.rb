@@ -1,3 +1,4 @@
+require 'job_box'
 class UpdateWorker
   include Sidekiq::Worker
 
