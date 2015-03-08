@@ -56,7 +56,6 @@ gem 'figaro'
 
 #Boostrap
 gem 'twitter-bootstrap-rails'
-gem 'bootstrap_form'
 
 #API Magic
 gem 'httparty'

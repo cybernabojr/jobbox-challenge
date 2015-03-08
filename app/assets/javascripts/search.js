@@ -2,31 +2,29 @@
 $(document).ready(function()
 {
 
-resize();
+
+//resize();
+
+
+$( ".button-checkbox" ).click(function( event ) {
+  $(event.target).css('background-color', "black");
+  $(event.currentTarget).css('background-color', "black");
+
+});
+
 results();
 });
 
 
-$(window).resize = resize();
-
-function resize(){
-  $('.search').css('padding', ($( window ).height()/3).toString()+'px');
-  $('.search').css('height', ($( window ).height()).toString()+'px');
-   $('.results').css('height', ($( window ).height()).toString()+'px');
-
-}
-
-$( window ).resize(function() {
-  resize();
-});
-
-
 function results(){
-console.log("Resultados");
+
   if($(".search-result").size() != 0){
-  $('.results').css('height', ($( window ).height()).toString()+'px');
+    console.log("Resultados");
+  $('.results').css('display', 'block');
      $('html, body').animate({
         scrollTop: $(".results").offset().top
     }, 2000);
     }
 }
+
+

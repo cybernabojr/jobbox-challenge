@@ -1,24 +1,26 @@
-<div class="row">
-  <div class="search center jumbotron">
-    <h1>Search Jobs</h1>
-    <div id="skills-search">
-
-      <%=  bootstrap_form_for search_path, method: :get do |f| %>
-
-         <%= f.collection_check_boxes ":q", LANGUAGES, "to_s","to_s"%>
-      <%#= collection_radio_buttons "q","", LANGUAGES.collect ,"to_s", "to_s"%>
-      <%#=select_tag "q", options_from_collection_for_select(LANGUAGES.collect, "to_s","to_s"), multiple: true%>
-      <li class="divider"></li>
-       <%#= collection_radio_buttons "q","", FRAMEWORKS.collect ,"to_s", "to_s"%>
-      <%= f.form_group do %>
-
-        <%= f.submit "Search"  %>
-      <% end %>
+<div class="row search">
+  <div class="search col-md-8 col-md-offset-2 center">
+    <h1>What are you good at?</h1>
+    <br>
+    <div id="skills-search center">
+      <%=  simple_form_for search_path, method: :get do |f| %>
+      <div class="row">
+        <%= f.collection_check_boxes "query", LANGUAGES, "to_s","to_s",  {:item_wrapper_class => 'btn btn-large btn-default btn-lg button-checkbox'} %>
+      </div>
+      <hr/>
+      <div class = "row">
+        <div class = "center">
+          <%= f.collection_check_boxes "query", FRAMEWORKS, "to_s","to_s",{:item_wrapper_class => ' btn btn-large btn-default btn-lg button-checkbox'} %>
+        </div>
+      </div>
+      <hr/>
+      <div class = "row">
+        <%= f.submit "Search", :class => "btn btn-large btn-default btn-lg search-button"  %>
+      </div>
       <% end %>
     </div>
   </div>
-  <% unless @companies.empty? %>
-  <div class="results" onchange="results()" >
+  <div class="results col-md-12" >
     <% @companies.each do |company| %>
     <div class="row search-result">
       <div class="col-md-3 center">
@@ -35,6 +37,5 @@
     </div>
     <% end %>
   </div>
-  <% end %>
 </div>
 </div>
