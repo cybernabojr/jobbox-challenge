@@ -1,7 +1,7 @@
 require 'httparty'
+
 class UpdateWorker
-  include Sidekiq::Worker
-  include HTTParty
+  include Sidekiq::Worker,HTTParty
 
   def self.save_company(company)
     Company.create(company)
