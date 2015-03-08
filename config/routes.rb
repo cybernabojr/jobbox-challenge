@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 #  resources :companies
 
   get 'companies' => 'companies#index'
+  get 'companies/:id' => 'companies#show'
   get 'offers' => 'offers#index'
+  get 'offers/:id' => 'offers#show'
+
+  get 'search' => 'search#search'
 
   root 'offers#index'
   # The priority is based upon order of creation: first created -> highest priority.

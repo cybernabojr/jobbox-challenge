@@ -7,6 +7,8 @@ gem 'rails', '4.1.6'
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
+gem 'less-rails'
+gem 'therubyracer'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -64,4 +66,8 @@ gem 'sidekiq'
 
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
+
+#First try with elastic search
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 

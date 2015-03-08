@@ -1,3 +1,5 @@
+require 'elasticsearch/model'
+
 class Offer < ActiveRecord::Base
 #Hack to have column type in offers
 self.inheritance_column = :_type_disabled
@@ -8,5 +10,10 @@ self.inheritance_column = :_type_disabled
 #relations
 belongs_to :company
 
+#ElasticSearch integration
+include Elasticsearch::Model
+include Elasticsearch::Model::Callbacks
 
 end
+
+Offer.import

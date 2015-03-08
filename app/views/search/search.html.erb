@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="page-header">
+    <h1>Search Jobs</h1>
+    <%= form_for search_path, method: :get do |f| %>
+    <p>
+      <%= f.label "Search for" %>
+      <%= text_field_tag :q, params[:q] %>
+      <%= submit_tag "Go", name: nil %>
+    </p>
+    <% end %>
+    <ul>
+      <% @companies.each do |company| %>
+      <div class="row search-result">
+        <div class="col-md-3 center">
+          <img class="search-result-image" src="<%=company.logo_url%>" alt="Logo" >
+        </div>
+        <div class="col-md-5 center ">
+          <h3>
+          <%= link_to company.name, company.website_url %>
+          </h3>
+        </div>
+        <div class="col-md-4 center">
+          <p>  <%=company.short_pitch%> </p>
+        </div>
+      </div>
+      <% end %>
+    </ul>
+  </div>
+</div>
