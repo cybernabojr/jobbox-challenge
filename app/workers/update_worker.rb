@@ -89,7 +89,7 @@ class UpdateWorker
   attr_accessor :headers, :base_uri
   def initialize
     self.headers = {"Authorization" => "Token token=#{ENV["jobbox_api_key"]}"}
-     self.base_uri ="http://www.jobbox.io/api/v1/"
+     self.base_uri ="https://www.jobbox.io/api/v1/"
   end
   # Returns the companies present at jobbox
   def companies( offset = 0, limit = 50)

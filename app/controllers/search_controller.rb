@@ -5,7 +5,7 @@ def search
     @offers = []
     @companies = []
   else
-    @offers = Offer.search params[:q]
+    @offers = Offer.search(params[:q]).records
      hits = @offers.results
 
     #collect all company ids
