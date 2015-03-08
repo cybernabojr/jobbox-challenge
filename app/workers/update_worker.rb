@@ -1,3 +1,4 @@
+require 'httparty'
 class UpdateWorker
   include Sidekiq::Worker
   include HTTParty
@@ -84,14 +85,15 @@ class UpdateWorker
     puts 'Finished refreshing Offers'
   end
 
-  base_uri "http://www.jobbox.io/api/v1/"
-  attr_accessor :headers
+
+  attr_accessor :headers, :base_uri
   def initialize
     self.headers = {"Authorization" => "Token token=#{ENV["jobbox_api_key"]}"}
+     self.base_uri ="http://www.jobbox.io/api/v1/"
   end
   # Returns the companies present at jobbox
   def companies( offset = 0, limit = 50)
-    response = UpdateWorker.get(UpdateWorker.base_uri+"/companies.json?offset=#{offset}&limit=#{limit}", :headers => headers)
+    response = HTTParty.get(self.base_uri+"/companies.json?offset=#{offset}&limit=#{limit}", :headers => self.headers)
     if response.success?
       response
     else
@@ -100,7 +102,7 @@ class UpdateWorker
   end
   # Returns the job offers present at jobbox
   def offers(  offset = 0, limit = 50)
-    response = UpdateWorker.get(UpdateWorker.base_uri+"/offers.json?offset=#{offset}&limit=#{limit}", :headers => headers)
+    response = HTTParty.get(self.base_uri+"/offers.json?offset=#{offset}&limit=#{limit}", :headers => self.headers)
     if response.success?
       response
     else
