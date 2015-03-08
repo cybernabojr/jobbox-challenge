@@ -7,8 +7,8 @@ $(document).ready(function()
 
 
 $( ".button-checkbox" ).click(function( event ) {
-  $(event.target).css('background-color', "black");
-  $(event.currentTarget).css('background-color', "black");
+  $(event.target).css('background-color', "#333");
+  $(event.currentTarget).css('background-color', "#333");
 
 });
 
@@ -18,11 +18,11 @@ results();
 
 function results(){
 
-  if($(".search-result").size() != 0){
+  if($(".panel-exists").size() != 0){
     console.log("Resultados");
   $('.results').css('display', 'block');
      $('html, body').animate({
-        scrollTop: $(".results").offset().top
+        scrollTop: $(".search-result").offset().top
     }, 2000);
     }
 }

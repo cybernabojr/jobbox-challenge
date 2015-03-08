@@ -1,14 +1,13 @@
 <%- model_class = Company -%>
 <div class="main-row">
-  <%= will_paginate @companies, renderer: BootstrapPagination::Rails %>
   <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     <% @companies.each do |c| %>
-    <div class="panel">
+    <div class="panel panel-exists">
       <div class="panel-heading" role="tab" id="heading<%=c.id%>">
         <table class="table">
           <tr>
             <td width="20%">
-              <img class="search-result-image" src="<%=c.logo_url%>" alt="Logo" >
+              <%=link_to image_tag(c.logo_url, :border => 0, :alt => 'Logo', :title => ''), c.website_url, :class => 'dock-item' %>
             </td>
             <td width="60%">
               <h1 class="">
