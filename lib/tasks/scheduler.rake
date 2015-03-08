@@ -1,4 +1,4 @@
-require Rails.root.join('lib/api/job_box')
+require 'httparty'
 
 desc "Heroku scheduler tasks"
 
