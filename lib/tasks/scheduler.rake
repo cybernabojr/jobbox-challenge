@@ -1,3 +1,5 @@
+require 'job_box'
+
 desc "Heroku scheduler tasks"
 
 task :repopulate_database_from_jobbox_api => :environment do
