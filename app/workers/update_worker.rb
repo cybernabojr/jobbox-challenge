@@ -3,15 +3,15 @@ require 'httparty'
 class UpdateWorker
   include Sidekiq::Worker,HTTParty
 
-  def self.save_company(company)
+  def save_company(company)
     Company.create(company)
   end
 
-  def self.save_offer(offer)
+  def save_offer(offer)
     Offer.create(offer)
   end
 
-  def self.update_companies
+  def update_companies
     puts 'Fetching companies from Jobbox API'
     #JobBox handles the http calls to the API
     api_caller = JobBox.new
@@ -39,7 +39,7 @@ class UpdateWorker
 
   end
 
-  def self.update_offers
+  def update_offers
     puts 'Fetching offers from Jobbox API'
     #JobBox handles the http calls to the API
     api_caller = JobBox.new
@@ -67,7 +67,7 @@ class UpdateWorker
 
   end
 
-  def self.refresh_companies
+  def refresh_companies
     puts 'Refreshing Companies...'
     puts 'Deleting all cached Companies...'
       Company.delete_all
@@ -76,7 +76,7 @@ class UpdateWorker
     puts 'Finished refreshing Companies'
   end
 
-  def self.refresh_offers
+  def refresh_offers
     puts 'Refreshing Offers...'
     puts 'Deleting all cached Offers...'
       Offer.delete_all
