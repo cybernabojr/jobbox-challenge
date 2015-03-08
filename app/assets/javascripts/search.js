@@ -10,7 +10,9 @@ results();
 $(window).resize = resize();
 
 function resize(){
-  $('.search').css('margin-top', ($( window ).height()/3).toString()+'px');
+  $('.search').css('padding', ($( window ).height()/3).toString()+'px');
+  $('.search').css('height', ($( window ).height()).toString()+'px');
+   $('.results').css('height', ($( window ).height()).toString()+'px');
 
 }
 
@@ -22,7 +24,7 @@ $( window ).resize(function() {
 function results(){
 console.log("Resultados");
   if($(".search-result").size() != 0){
-   $('.search').css('height', '300px');
+  $('.results').css('height', ($( window ).height()).toString()+'px');
      $('html, body').animate({
         scrollTop: $(".results").offset().top
     }, 2000);

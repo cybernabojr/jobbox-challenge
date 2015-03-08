@@ -4,14 +4,12 @@
     <h1>Search Jobs</h1>
     <%= form_for search_path, method: :get do |f| %>
     <p>
-      <%= f.label "Search for" %>
       <%= text_field_tag :q, params[:q] %>
       <%= submit_tag "Go", name: nil %>
     </p>
     <% end %>
     </div>
     <div class="results" onchange="results()" >
-    <ul>
       <% @companies.each do |company| %>
       <div class="row search-result">
         <div class="col-md-3 center">
@@ -27,7 +25,6 @@
         </div>
       </div>
       <% end %>
-    </ul>
     </div>
   </div>
 </div>
