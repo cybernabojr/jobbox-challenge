@@ -1,3 +1,5 @@
+require 'httparty'
+
 class JobBox
   include HTTParty
   base_uri "http://www.jobbox.io/api/v1/"
