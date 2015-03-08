@@ -3,7 +3,7 @@ require 'httparty'
 
 class JobBox
   include HTTParty
-  base_uri "http://www.jobbox.io/api/v1/"
+  base_uri "https://www.jobbox.io/api/v1/"
   attr_accessor :headers
   def initialize
     self.headers = {"Authorization" => "Token token=#{ENV["jobbox_api_key"]}"}
