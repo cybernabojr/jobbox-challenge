@@ -1,40 +1,63 @@
+var ready;
 
-$(document).ready(function()
-{
-
-
-//resize();
+ready = function() {
 
 
-$( ".button-checkbox" ).click(function( event ) {
-  console.log(event);
-  $(event.target).css('background-color', "#333");
-  $(event.currentTarget).css('background-color', "#333");
-});
+    $(".button-checkbox").click(function(event) {
 
-results();
-});
+        invert_color($(event.target));
 
+    });
 
-function results(){
+    results();
 
-  if($(".panel-exists").size() != 0){
-    console.log("Resultados");
-  $('.results').css('display', 'block');
-     $('html, body').animate({
-        scrollTop: $(".search-result").offset().top
-    }, 2000);
+}
+
+function invert_color(object) {
+    if (object.is("input")) {
+        if (object.parent().css("background-color") == "rgb(51, 51, 51)") {
+            object.parent().css('background-color', "");
+            return;
+        }
+        if (object.parent().css("background-color") == "rgb(121, 199, 145)") {
+            object.parent().css('background-color', "rgb(51, 51, 51)");
+            return;
+        }
+    }
+    if (object.css("background-color") == "rgb(51, 51, 51)") {
+        object.children("input").prop('checked', false);
+        object.css('background-color', "");
+        return;
+    }
+    if (object.css("background-color") == "rgb(121, 199, 145)") {
+        object.css('background-color', "rgb(51, 51, 51)");
+        object.children("input").prop('checked', true);
+
+        return;
+    }
+
+}
+
+function results() {
+
+    if ($(".panel-exists").size() != 0) {
+        console.log("Resultados");
+        $('.results').css('display', 'block');
+        $('html, body').animate({
+            scrollTop: $(".search-result").offset().top
+        }, 2000);
     }
 }
 
-function scroll_home(){
+function scroll_home() {
 
 
 
-     $('html, body').animate({
+    $('html, body').animate({
         scrollTop: $(".main-row").offset().top
     }, 2000);
 
 }
 
-
+$(document).ready(ready);
+$(document).on('page:load', ready);
