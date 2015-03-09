@@ -1,164 +1,159 @@
 <%= form_for @offer, :html => { :class => "form-horizontal offer" } do |f| %>
-
-    <% if @offer.errors.any? %>
-    <div id="error_expl" class="panel panel-danger">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@offer.errors.count, "error") %> prohibited this offer from being saved:</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-        <% @offer.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    </div>
-  <% end %>
-
-  <div class="control-group">
-    <%= f.label :city, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :city, :class => 'form-control' %>
-    </div>
-    <%= error_span(@offer[:city]) %>
+<% if @offer.errors.any? %>
+<div id="error_expl" class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= pluralize(@offer.errors.count, "error") %> prohibited this offer from being saved:</h3>
   </div>
-  <div class="control-group">
-    <%= f.label :company_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :company_id, :class => 'form-control' %>
-    </div>
-    <%= error_span(@offer[:company_id]) %>
+  <div class="panel-body">
+    <ul>
+      <% @offer.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
   </div>
-  <div class="control-group">
-    <%= f.label :country_code, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :country_code, :class => 'form-control' %>
-    </div>
-    <%= error_span(@offer[:country_code]) %>
+</div>
+<% end %>
+<div class="control-group">
+  <%= f.label :city, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :city, :class => 'form-control' %>
   </div>
-  <div class="control-group">
-    <%= f.label :country_name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :country_name, :class => 'form-control' %>
-    </div>
-    <%= error_span(@offer[:country_name]) %>
+  <%= error_span(@offer[:city]) %>
+</div>
+<div class="control-group">
+  <%= f.label :company_id, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :company_id, :class => 'form-control' %>
   </div>
-  <div class="control-group">
-    <%= f.label :currency_code, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :currency_code, :class => 'form-control' %>
-    </div>
-    <%= error_span(@offer[:currency_code]) %>
+  <%= error_span(@offer[:company_id]) %>
+</div>
+<div class="control-group">
+  <%= f.label :country_code, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :country_code, :class => 'form-control' %>
   </div>
-  <div class="control-group">
-    <%= f.label :expires_at, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :expires_at, :class => 'form-control' %>
-    </div>
-    <%= error_span(@offer[:expires_at]) %>
+  <%= error_span(@offer[:country_code]) %>
+</div>
+<div class="control-group">
+  <%= f.label :country_name, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :country_name, :class => 'form-control' %>
   </div>
-  <div class="control-group">
-    <%= f.label :nice_to_have, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :nice_to_have, :class => 'form-control' %>
-    </div>
-    <%= error_span(@offer[:nice_to_have]) %>
+  <%= error_span(@offer[:country_name]) %>
+</div>
+<div class="control-group">
+  <%= f.label :currency_code, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :currency_code, :class => 'form-control' %>
   </div>
-  <div class="control-group">
-    <%= f.label :perks, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :perks, :class => 'form-control' %>
-    </div>
-    <%= error_span(@offer[:perks]) %>
+  <%= error_span(@offer[:currency_code]) %>
+</div>
+<div class="control-group">
+  <%= f.label :expires_at, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :expires_at, :class => 'form-control' %>
   </div>
-  <div class="control-group">
-    <%= f.label :published_at, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :published_at, :class => 'form-control' %>
-    </div>
-    <%= error_span(@offer[:published_at]) %>
+  <%= error_span(@offer[:expires_at]) %>
+</div>
+<div class="control-group">
+  <%= f.label :nice_to_have, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :nice_to_have, :class => 'form-control' %>
   </div>
-  <div class="control-group">
-    <%= f.label :reward, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :reward, :class => 'form-control' %>
-    </div>
-    <%= error_span(@offer[:reward]) %>
+  <%= error_span(@offer[:nice_to_have]) %>
+</div>
+<div class="control-group">
+  <%= f.label :perks, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :perks, :class => 'form-control' %>
   </div>
-  <div class="control-group">
-    <%= f.label :remote, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :remote, :class => 'form-control' %>
-    </div>
-    <%= error_span(@offer[:remote]) %>
+  <%= error_span(@offer[:perks]) %>
+</div>
+<div class="control-group">
+  <%= f.label :published_at, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :published_at, :class => 'form-control' %>
   </div>
-  <div class="control-group">
-    <%= f.label :relocation_paid, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :relocation_paid, :class => 'form-control' %>
-    </div>
-    <%= error_span(@offer[:relocation_paid]) %>
+  <%= error_span(@offer[:published_at]) %>
+</div>
+<div class="control-group">
+  <%= f.label :reward, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :reward, :class => 'form-control' %>
   </div>
-  <div class="control-group">
-    <%= f.label :role_description, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :role_description, :class => 'form-control' %>
-    </div>
-    <%= error_span(@offer[:role_description]) %>
+  <%= error_span(@offer[:reward]) %>
+</div>
+<div class="control-group">
+  <%= f.label :remote, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :remote, :class => 'form-control' %>
   </div>
-  <div class="control-group">
-    <%= f.label :salary_low, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :salary_low, :class => 'form-control' %>
-    </div>
-    <%= error_span(@offer[:salary_low]) %>
+  <%= error_span(@offer[:remote]) %>
+</div>
+<div class="control-group">
+  <%= f.label :relocation_paid, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :relocation_paid, :class => 'form-control' %>
   </div>
-  <div class="control-group">
-    <%= f.label :salary_high, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :salary_high, :class => 'form-control' %>
-    </div>
-    <%= error_span(@offer[:salary_high]) %>
+  <%= error_span(@offer[:relocation_paid]) %>
+</div>
+<div class="control-group">
+  <%= f.label :role_description, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :role_description, :class => 'form-control' %>
   </div>
-  <div class="control-group">
-    <%= f.label :successful?, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :successful?, :class => 'form-control' %>
-    </div>
-    <%= error_span(@offer[:successful?]) %>
+  <%= error_span(@offer[:role_description]) %>
+</div>
+<div class="control-group">
+  <%= f.label :salary_low, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :salary_low, :class => 'form-control' %>
   </div>
-  <div class="control-group">
-    <%= f.label :title, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :title, :class => 'form-control' %>
-    </div>
-    <%= error_span(@offer[:title]) %>
+  <%= error_span(@offer[:salary_low]) %>
+</div>
+<div class="control-group">
+  <%= f.label :salary_high, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :salary_high, :class => 'form-control' %>
   </div>
-  <div class="control-group">
-    <%= f.label :work_from_home, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :work_from_home, :class => 'form-control' %>
-    </div>
-    <%= error_span(@offer[:work_from_home]) %>
+  <%= error_span(@offer[:salary_high]) %>
+</div>
+<div class="control-group">
+  <%= f.label :successful?, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :successful?, :class => 'form-control' %>
   </div>
-  <div class="control-group">
-    <%= f.label :type, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :type, :class => 'form-control' %>
-    </div>
-    <%= error_span(@offer[:type]) %>
+  <%= error_span(@offer[:successful?]) %>
+</div>
+<div class="control-group">
+  <%= f.label :title, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :title, :class => 'form-control' %>
   </div>
-  <div class="control-group">
-    <%= f.label :tags, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :tags, :class => 'form-control' %>
-    </div>
-    <%= error_span(@offer[:tags]) %>
+  <%= error_span(@offer[:title]) %>
+</div>
+<div class="control-group">
+  <%= f.label :work_from_home, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :work_from_home, :class => 'form-control' %>
   </div>
-
-
-  <%= f.submit nil, :class => 'btn btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            offers_path, :class => 'btn btn-default' %>
-
+  <%= error_span(@offer[:work_from_home]) %>
+</div>
+<div class="control-group">
+  <%= f.label :type, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :type, :class => 'form-control' %>
+  </div>
+  <%= error_span(@offer[:type]) %>
+</div>
+<div class="control-group">
+  <%= f.label :tags, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :tags, :class => 'form-control' %>
+  </div>
+  <%= error_span(@offer[:tags]) %>
+</div>
+<%= f.submit nil, :class => 'btn btn-primary' %>
+<%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+offers_path, :class => 'btn btn-default' %>
 <% end %>

@@ -2,7 +2,6 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
-
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:city) %>:</strong></dt>
   <dd><%= @offer.city %></dd>
@@ -45,6 +44,5 @@
   <dt><strong><%= model_class.human_attribute_name(:tags) %>:</strong></dt>
   <dd><%= @offer.tags %></dd>
 </dl>
-
 <%= link_to t('.back', :default => t("helpers.links.back")),
-              offers_path, :class => 'btn btn-default'  %>
+offers_path, :class => 'btn btn-default'  %>
