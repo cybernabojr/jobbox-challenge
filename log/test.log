@@ -1,0 +1,1045 @@
+  [1m[36mSQL (1.4ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (24.2ms)[0m  CREATE TABLE "companies" ("id" serial primary key, "name" character varying(255), "logo_url" character varying(255), "website_url" character varying(255), "created_at" timestamp, "updated_at" timestamp, "short_pitch" character varying(255), "description" text) 
+  [1m[36m (9.6ms)[0m  [1mCREATE TABLE "offers" ("id" serial primary key, "city" character varying(255), "company_id" integer, "country_code" character varying(255), "country_name" character varying(255), "currency_code" character varying(255), "expires_at" date, "nice_to_have" text, "perks" text, "published_at" timestamp, "reward" integer, "remote" boolean, "relocation_paid" boolean, "role_description" text, "salary_low" integer, "salary_high" integer, "successful?" boolean, "title" character varying(255), "work_from_home" boolean, "type" character varying(255), "tags" character varying(255)[] DEFAULT '{}', "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.5ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (2.8ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (1.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150307210747')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150307151352')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150307155509')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150307180429')
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (2.0ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.6ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.7ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 298486374)
+  [1m[36mFixture Delete (1.0ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.8ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (1.6ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (1.1ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.4ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.6ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.6ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.6ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:26', '2015-03-07 21:57:26', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.6ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.6ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 298486374)
+  [1m[36mFixture Delete (0.9ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.7ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.5ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 298486374)[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.6ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (1.1ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.4ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 21:57:48', '2015-03-07 21:57:48', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.8ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.8ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 298486374)
+  [1m[36mFixture Delete (1.8ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (1.3ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ..., 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+                                                                   ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 298486374)[0m
+  [1m[35mFixture Delete (0.5ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.7ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ..., 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+                                                                   ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 298486374)
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ..., 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+                                                                   ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 298486374)[0m
+  [1m[35mFixture Delete (0.5ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ..., 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+                                                                   ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 298486374)
+  [1m[36mFixture Delete (0.5ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.7ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ..., 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+                                                                   ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+  [1m[36mFixture Insert (0.4ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.6ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ..., 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+                                                                   ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (3.0ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.4ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ..., 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+                                                                   ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 298486374)[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ..., 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+                                                                   ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.5ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 298486374)
+  [1m[36mFixture Delete (0.5ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (1.2ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ..., 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+                                                                   ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.6ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ..., 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+                                                                   ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 298486374)
+  [1m[36mFixture Delete (0.6ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.6ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ..., 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+                                                                   ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 298486374)[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ..., 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+                                                                   ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (1.3ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ..., 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+                                                                   ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+  [1m[36mFixture Insert (0.4ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 298486374)[0m
+  [1m[35mFixture Delete (0.5ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.6ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ..., 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+                                                                   ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, '---
+MyString: 
+MyString2: 
+', '2015-03-07 22:00:21', '2015-03-07 22:00:21', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.9ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.7ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 298486374)
+  [1m[36mFixture Delete (0.9ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (1.2ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.6ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 298486374)
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 298486374)[0m
+  [1m[35mFixture Delete (0.5ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.6ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 298486374)
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 298486374)[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.8ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 298486374)[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (1.9ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)[0m
+  [1m[35mFixture Insert (1.5ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 298486374)
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.6ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+  [1m[36mFixture Insert (0.4ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.4ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)[0m
+  [1m[35mFixture Insert (1.0ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 298486374)
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.6ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 298486374)
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 298486374)[0m
+  [1m[35mFixture Delete (0.5ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:04', '2015-03-07 22:02:04', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.7ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.6ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 298486374)
+  [1m[36mFixture Delete (2.7ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.7ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.7ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (1.5ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 298486374)
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+  [1m[36mFixture Insert (0.7ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)[0m
+  [1m[35mFixture Insert (1.8ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.5ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 298486374)[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 298486374)
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 298486374)[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 298486374)
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.6ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 298486374)[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.6ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "companies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 298486374)
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM "offers"[0m
+  [1m[35mFixture Insert (0.6ms)[0m  INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:45', '2015-03-07 22:02:45', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" DISABLE TRIGGER ALL;ALTER TABLE "offers" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "companies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:46', '2015-03-07 22:02:46', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "companies" ("name", "description", "logo_url", "website_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2015-03-07 22:02:46', '2015-03-07 22:02:46', 298486374)[0m
+  [1m[35mFixture Delete (0.8ms)[0m  DELETE FROM "offers"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:46', '2015-03-07 22:02:46', 980190962)[0m
+PG::InvalidTextRepresentation: ERROR:  array value must start with "{" or dimension information
+LINE 1: ... 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString'...
+                                                             ^
+: INSERT INTO "offers" ("city", "company_id", "country_code", "country_name", "currency_code", "expires_at", "nice_to_have", "perks", "published_at", "reward", "remote", "relocation_paid", "role_description", "salary_low", "salary_high", "successful?", "title", "work_from_home", "type", "tags", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', 'MyString', '2015-03-07', 'MyText', 'MyText', '2015-03-07 15:55:09.000000', 1, 'f', 'f', 'MyText', 1, 1, 'f', 'MyString', 'f', NULL, 'MyString', '2015-03-07 22:02:46', '2015-03-07 22:02:46', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ENABLE TRIGGER ALL;ALTER TABLE "offers" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mCompany Load (1.8ms)[0m  [1mSELECT  "companies".* FROM "companies"   ORDER BY "companies"."id" ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
