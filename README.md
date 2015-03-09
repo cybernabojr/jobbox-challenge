@@ -20,12 +20,10 @@
     <div id="home-section" role="region" title="Quick navigation" class="nav-section">
 
 ## 
-    [Home](doc/app/index.html)
+  
 
   <div id="table-of-contents-navigation">
-    [Pages](./table_of_contents.html#pages)
-    [Classes](./table_of_contents.html#classes)
-    [Methods](./table_of_contents.html#methods)
+     [Home](doc/app/index.html)
   </div>
 </div>
 
