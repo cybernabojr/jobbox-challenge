@@ -1,4 +1,4 @@
-#Define more popular skills to be made available to search
+#Define more popular skills to be made available as button search
 LANGUAGES = ['C', "Go", "Java", "JavaScript", "Objective-C", "PHP", "Python", "Ruby", "Scala"]
 
 FRAMEWORKS = [".NET", "AngularJS", "Backbone.js","Cassandra", "Django", "Docker",

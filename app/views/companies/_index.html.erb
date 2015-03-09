@@ -5,21 +5,21 @@
     <div class="panel panel-exists">
       <div class="panel-heading" role="tab" id="heading<%=c.id%>">
         <table class="table">
-          <tr>
+          <tr height="120px">
             <td width="20%">
-              <%=link_to image_tag(c.logo_url, :border => 0, :alt => 'Logo', :title => ''), c.website_url, :id => 'invisible_link' %>
+              <%=link_to image_tag(c.logo_url, :border => 0, :alt => 'Logo', :title => '', :height => '120px'), c.website_url, :id => 'invisible_link' %>
             </td>
             <td width="60%">
               <h1 class="">
               <%=c.name %>
               </h1>
               <br>
-              <p> <%= c.short_pitch %> </p>
+              <blockquote class="blockquote-reverse">
+                <em> <%= c.short_pitch %> </em>
+              </blockquote>
             </td>
-            <td width="20%">
-            </td>
-            <td>
-              <a id ="invisible_link" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=c.id%>" aria-expanded="false" aria-controls="collapse<%=c.id%>">
+            <td width="20%" class="text-right">
+              <a style ="display:<%= c.description.nil? ? 'none' : '' %>;" id ="invisible_link" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=c.id%>" aria-expanded="false" aria-controls="collapse<%=c.id%>">
                 <%=fa_icon "caret-square-o-down 5x", class: "fa-mod"  %>
               </a>
             </td>

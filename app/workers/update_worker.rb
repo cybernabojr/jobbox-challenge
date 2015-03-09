@@ -29,13 +29,13 @@ class UpdateWorker
         #Move cursor forward, api_limit is 50
         offset += 50
       else
-         puts 'something went wrong while updating companies!'
+        puts 'something went wrong while updating companies!'
         raise response.response
         break
       end
     end
 
-      puts "Finished fetching the companies"
+    puts "Finished fetching the companies"
 
   end
 
@@ -57,31 +57,31 @@ class UpdateWorker
         #Move cursor forward, api_limit is 50
         offset += 50
       else
-         puts 'something went wrong while updating offers!'
+        puts 'something went wrong while updating offers!'
         raise response.response
         break
       end
     end
 
-      puts "Finished fetching the offers"
+    puts "Finished fetching the offers"
 
   end
 
   def refresh_companies
     puts 'Refreshing Companies...'
     puts 'Deleting all cached Companies...'
-      Company.delete_all
+    Company.delete_all
     puts 'All cached companies removed...'
-      self.update_companies
+    self.update_companies
     puts 'Finished refreshing Companies'
   end
 
   def refresh_offers
     puts 'Refreshing Offers...'
     puts 'Deleting all cached Offers...'
-      Offer.delete_all
+    Offer.delete_all
     puts 'All cached Offers removed...'
-      self.update_offers
+    self.update_offers
     puts 'Finished refreshing Offers'
   end
 
@@ -89,7 +89,7 @@ class UpdateWorker
   attr_accessor :headers, :base_uri
   def initialize
     self.headers = {"Authorization" => "Token token=#{ENV["jobbox_api_key"]}"}
-     self.base_uri ="https://www.jobbox.io/api/v1/"
+    self.base_uri ="https://www.jobbox.io/api/v1/"
   end
   # Returns the companies present at jobbox
   def companies( offset = 0, limit = 50)
@@ -112,4 +112,3 @@ class UpdateWorker
 
 
 end
-
