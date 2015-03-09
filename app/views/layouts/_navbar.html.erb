@@ -1,6 +1,6 @@
 <div class ="row">
   <header id="header" class="">
-    <nav class="navbar navbar-fixed-top " style="background-color:white">
+    <nav class="navbar navbar-fixed-top " style="background-color:white;">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -9,25 +9,28 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand"  onclick="scroll_home()">Findr</a>
+          <ul class="nav navbar-nav ">
+            <li> <a href="<%= root_path%>"><h3>Findr.co</h3></a></li>
+          </ul>
+
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="http://cybernabojr.github.io">Contact</a></li>
+            <li><a href="<%=companies_path  %>"><h3>Companies</h3></a></li>
+            <li><a href="<%=search_path%>"><h3>Search</h3></a></li>
+            <li><a href="http://cybernabojr.github.io"><h3>Contact</h3></a></li>
             <li>
-<!--
+              <!--
               <%= form_for search_path, method: :get, class: "form-inline" do |f|%>
-
-                  <div class="form-group" width="100px">
-                  <div width="50%">
-                <%= text_field_tag :q, params[:q], class: "form-control" %>
+              <div class="form-group" width="100px">
+                <div width="50%">
+                  <%= text_field_tag :q, params[:q], class: "form-control" %>
                 </div>
                 <div width= "50%">
                   <%= submit_tag "Go", name: nil , class: "btn btn-large btn-default btn-lg blank-button " %>
                 </div>
-                </div>
-
- -->
+              </div>
+              -->
             <% end %></li>
           </ul>
           </div><!--/.nav-collapse -->

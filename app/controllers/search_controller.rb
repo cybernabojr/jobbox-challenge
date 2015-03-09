@@ -5,7 +5,7 @@ class SearchController < ApplicationController
     if params[:q].nil? && params["/search"].nil?
       @offers = []
       @companies = []
-      return
+
       #If user searched using our buttons
     elsif params[:q].nil?
       hits = []

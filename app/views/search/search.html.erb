@@ -1,3 +1,4 @@
+<%= javascript_include_tag "search.js" %>
 <div class="row main-row">
   <div class="search col-md-8 col-md-offset-2 center">
     <h1>What are you good at?</h1>
@@ -19,11 +20,14 @@
       </div>
       <% end %>
     </div>
+    <hr/>
+     <small><em> There are currently <%= offers_count%> job offers amoung <%= companies_count%> Companies. </em></small>
   </div>
   <div class="results col-md-12" >
-    <div class="row search-result">
+    <div class="row search-result main-row">
       <%= render 'companies/index', :options => {:companies => @companies}  %>
     </div>
   </div>
 </div>
 </div>
+
