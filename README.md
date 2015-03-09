@@ -23,7 +23,7 @@
   
 
   <div id="table-of-contents-navigation">
-     [Home](doc/app/index.html)
+     [Home](./index.html)
   </div>
 </div>
 
