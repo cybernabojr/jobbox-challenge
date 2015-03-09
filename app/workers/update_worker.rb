@@ -1,5 +1,6 @@
 require 'httparty'
 
+# Sidekiq worker that will take care of dumping de database and request fresh data from the API
 class UpdateWorker
   include Sidekiq::Worker,HTTParty
 
@@ -12,13 +13,14 @@ class UpdateWorker
   end
 
   def update_companies
+
     puts 'Fetching companies from Jobbox API'
     #JobBox handles the http calls to the API
-    api_caller = JobBox.new
+    api_caller = JobBox.new(self.headers)
     #Cursor for api calls since they are paginated
     offset = 0
     while true
-      response = UpdateWorker.new.companies(offset)
+      response = api_caller.companies(offset)
       if response.success?
         #If response is empty, there are no more companies
         response.size == 0 ? break : ''
@@ -40,13 +42,14 @@ class UpdateWorker
   end
 
   def update_offers
+
     puts 'Fetching offers from Jobbox API'
     #JobBox handles the http calls to the API
-    api_caller = JobBox.new
+    api_caller = JobBox.new(self.headers)
     #Cursor for api calls since they are paginated
     offset = 0
     while true
-      response = UpdateWorker.new.offers(offset)
+      response = api_caller.offers(offset)
       if response.success?
         #If response is empty, there are no more offers
         response.size == 0 ? break : ''

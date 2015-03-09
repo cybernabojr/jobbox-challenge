@@ -5,12 +5,13 @@ class JobBox
   include HTTParty
   base_uri "https://www.jobbox.io/api/v1/"
   attr_accessor :headers
-  def initialize
-    self.headers = {"Authorization" => "Token token=#{ENV["jobbox_api_key"]}"}
+  def initialize(headers)
+    self.headers = headers
+    puts "Headers = " + self.headers.to_s
   end
   # Returns the companies present at jobbox
   def companies( offset = 0, limit = 50)
-    response = HTTParty.get(JobBox.base_uri+"/companies.json?offset=#{offset}&limit=#{limit}", :headers => headers)
+    response = HTTParty.get(JobBox.base_uri+"/companies.json?offset=#{offset}&limit=#{limit}", :headers => self.headers)
     if response.success?
       response
     else
@@ -19,7 +20,7 @@ class JobBox
   end
   # Returns the job offers present at jobbox
   def offers(  offset = 0, limit = 50)
-    response = HTTParty.get(JobBox.base_uri+"/offers.json?offset=#{offset}&limit=#{limit}", :headers => headers)
+    response = HTTParty.get(JobBox.base_uri+"/offers.json?offset=#{offset}&limit=#{limit}", :headers => self.headers)
     if response.success?
       response
     else
